@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -5,7 +6,7 @@ import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Home = () => {
   const menus = [
@@ -20,9 +21,9 @@ const Home = () => {
   ];
   const [open, setOpen] = useState(true);
   return (
-    <section className="flex gap-6">
+    <section className="flex fixed gap-6">
       <div
-        className={`bg-[#0e0e0e] min-h-screen ${
+        className={`bg-[#0e0e0e]  min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >
@@ -36,7 +37,7 @@ const Home = () => {
         <div className="mt-4 flex flex-col gap-4 relative">
           {menus?.map((menu, i) => (
             <Link
-              to={menu?.link}
+              href={menu?.link}
               key={i}
               className={` ${
                 menu?.margin && "mt-5"
@@ -63,9 +64,6 @@ const Home = () => {
             </Link>
           ))}
         </div>
-      </div>
-      <div className="m-3 text-xl text-gray-900 font-semibold">
-        REACT TAILWIND
       </div>
     </section>
   );
